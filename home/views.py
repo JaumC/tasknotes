@@ -14,10 +14,11 @@ def cadastrar(request):
 def editar(request, id):
     task = Tasks.objects.get(id=id)
     #return render(request, 'editar.html', {"task": task})
-    vnome = request.POST.get("nome")
+    vnome = request.POST.get("novo_nome")
     task.nome = vnome
     task.save()
-    return render(request, 'home.html', {"task": task})
+    return redirect(home)
+    #return render(request, 'home.html', {"task": task})
 
 def excluir(request, id):
     task = Tasks.objects.get(id=id)

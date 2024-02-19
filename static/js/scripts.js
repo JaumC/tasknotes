@@ -1,4 +1,9 @@
-function Clicar(){
-    window.alert('Teste')
-    console.log('aqui foi')
+function Clicou(){
+    var modal = document.getElementById('modal')
+    modal.style.display = 'flex'
+}
+
+function FecharM(){
+    var modal = document.getElementById('modal')
+    modal.style.display = 'none'
 }

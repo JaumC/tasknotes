@@ -26,36 +26,39 @@
         <div>
 
             {% if tasks %}
-                <h2>Task list</h2>
+            <h2>Task list</h2>
 
             {% else %}
-                <p>Ta meio vazio aqui</p>
+            <p>Ta meio vazio aqui</p>
 
             {% endif %}
 
             {% for task in tasks %}
-  
-    
-                <input type="checkbox" name="checkbox" id="checkbox">
-                {{task.nome}}
-                <a href="{% url 'editar' task.id %}">&#128395;</a>
 
-                {% if t %}
-                {{task.name}}
 
-                <form method="POST">
+            <input type="checkbox" name="checkbox" id="checkbox">
+            {{task.nome}} <a onclick="Clicou()">&#128395;</a>
+
+            <div id="modal">
+
+                <p onclick="FecharM()">X</p>
+                <form method="POST" action="{% url 'editar' task.id %}">
                     {% csrf_token %}
-            
-                    <input type="text" name="nome" value="{{task.nome}}">
+    
+                    <input type="text" name="novo_nome" value="{{task.nome}}">
                     <button type="submit">&#10003;</button>
                 </form>
-                {% endif %}
-
-                <a href="{% url 'excluir' task.id %}">&#128465;</a><br><br>
     
+            </div>
+
+            <a href="{% url 'excluir' task.id %}">&#128465;</a><br><br>
+
             {% endfor %}
 
+
         </div>
+
+       
     </section>
 
 </body>
