@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Notes</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <section>
+        <div>
+            <h1>Input</h1>
+
+            <form method="POST" action="{% url 'cadastrar' %}">
+                {% csrf_token %}
+
+                <input type="text" name="nome" required>
+                <button type="submit">&#10003;</button>
+
+            </form>
+        </div>
+        <div>
+
+            {% if tasks %}
+                <h2>Task list</h2>
+
+            {% else %}
+                <p>Ta meio vazio aqui</p>
+
+            {% endif %}
+
+            {% for task in tasks %}
+  
+    
+                <input type="checkbox" name="checkbox" id="checkbox">
+                {{task.nome}}
+                <a href="{% url 'editar' task.id %}">&#128395;</a>
+
+                {% if t %}
+                {{task.name}}
+
+                <form method="POST">
+                    {% csrf_token %}
+            
+                    <input type="text" name="nome" value="{{task.nome}}">
+                    <button type="submit">&#10003;</button>
+                </form>
+                {% endif %}
+
+                <a href="{% url 'excluir' task.id %}">&#128465;</a><br><br>
+    
+            {% endfor %}
+
+        </div>
+    </section>
+
+</body>
+<script src="{% static 'js/scripts.js' %}"></script>
+
+</html>
