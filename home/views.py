@@ -8,20 +8,16 @@ def home(request):
 def cadastrar(request):
     vnome = request.POST.get("nome")
     Tasks.objects.create(nome=vnome)
-    tasks = Tasks.objects.all()
-    return redirect(home)
+    return redirect('home')
 
-def editar(request, id):
+def atualizar(request, id):
     task = Tasks.objects.get(id=id)
-    #return render(request, 'editar.html', {"task": task})
     vnome = request.POST.get("novo_nome")
     task.nome = vnome
     task.save()
-    return redirect(home)
-    #return render(request, 'home.html', {"task": task})
+    return redirect('home')
 
 def excluir(request, id):
     task = Tasks.objects.get(id=id)
     task.delete()
-    return redirect(home)
-
+    return redirect('home')

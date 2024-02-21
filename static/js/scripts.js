@@ -1,9 +1,9 @@
-function Clicou(){
-    var modal = document.getElementById('modal')
-    modal.style.display = 'flex'
+function AbrirM(taskId) {
+    var modal = document.getElementById("modal" + taskId)
+    modal.style.display = 'block'
 }
 
-function FecharM(){
-    var modal = document.getElementById('modal')
+function FecharM(taskId) {
+    var modal = document.getElementById("modal" + taskId)
     modal.style.display = 'none'
 }

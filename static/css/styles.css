@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 body {
     background-color: rgb(34, 10, 48);
     color: white;
+    font-family: "Montserrat", sans-serif;
+
 }
 
 section {
@@ -12,28 +16,173 @@ a {
     text-decoration: none;
 }
 
-#modal {
-    /*position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    */
-    color: #fff;
-    padding: 20px 10px 20px 20px;
+
+
+div[id^="modal"] {
+
+    position: absolute;
+    top: 5.6%;
+    left: 13%;
+    padding: 15px;
     display: none;
-    gap: 0.5rem;
-    width: 80%;
-    max-width: 500px;
+    width: 73%;
     border-radius: 8px;
-    text-align: left;
-    max-height: 650px;
-    overflow-y: auto;
-    background: rgb(42, 36, 53);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.473);
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
+    background-color: rgb(34, 10, 48);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.281);
     margin: 0 auto;
     font-weight: 600;
     font-size: 1rem;
+    border: 1px solid #3a2168;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+input[name="novo_nome"] {
+
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 5px 0 5px;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+
+}
+
+.button:hover {
+    background-color: #d32f2f;
+}
+
+
+.checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #504444;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox:checked {
+    background-color: #1bcf75;
+}
+
+.input {
+    padding: 10px;
+    width: 70%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista {
+    display: flex;
+    width: 73%;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid #3a2168;
+    justify-content: space-between;
+    /* Distribui os itens horizontalmente */
+}
+
+.buttons-container {
+    display: flex;
+}
+
+.buttons {
+    padding: 5px 15px;
+    background-color: #5423b8;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    /* Adicionei um pequeno espaçamento entre os botões */
+}
+
+.buttons:hover {
+    background-color: #2e0e69;
+
+}
+
+.buttons_vermelho {
+    padding: 5px 15px;
+    background-color: #ec3333;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    /* Adicionei um pequeno espaçamento entre os botões */
+
+}
+
+.buttons_vermelho:hover {
+    background-color: #a52525;
+}
+
+.tasks {
+    font-size: 20px;
+    margin: 10px;
+    padding: 5px;
+    /* Margem direita menor para separar dos botões */
+    flex: 1;
+    text-align: left;
+    /* Alinha o texto à esquerda */
+    word-wrap: break-word;
+    /* Quebra o texto para a próxima linha se não couber */
+    max-width: 85%;
+    width: 50%;
+
 }

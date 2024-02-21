@@ -18,7 +18,7 @@
             <form method="POST" action="{% url 'cadastrar' %}">
                 {% csrf_token %}
 
-                <input type="text" name="nome" required>
+                <input type="text" name="nome" class="input" required>
                 <button type="submit">&#10003;</button>
 
             </form>
@@ -29,36 +29,44 @@
             <h2>Task list</h2>
 
             {% else %}
-            <p>Ta meio vazio aqui</p>
+            <p>Está meio vazio aqui</p>
 
             {% endif %}
 
+
             {% for task in tasks %}
 
-
-            <input type="checkbox" name="checkbox" id="checkbox">
-            {{task.nome}} <a onclick="Clicou()">&#128395;</a>
-
-            <div id="modal">
-
-                <p onclick="FecharM()">X</p>
-                <form method="POST" action="{% url 'editar' task.id %}">
-                    {% csrf_token %}
-    
-                    <input type="text" name="novo_nome" value="{{task.nome}}">
-                    <button type="submit">&#10003;</button>
-                </form>
-    
+            <div class="container">
+                <div class="lista">
+                    <input type="checkbox" name="checkbox" class="checkbox">
+                    <p class="tasks">{{task.nome}}</p>
+                    <div class="buttons-container">
+                        <!--Editar-->
+                        <div class="buttons" onclick="AbrirM({{ task.id }})">&#128395;</div>
+                        <!--Excluir-->
+                        <a class="buttons_vermelho" onclick="return confirm('Tem certeza que deseja excluir?')" href="{% url 'excluir' task.id %}">&#128465;</a>
+                    </div>
+                    <br><br>
+                </div>
             </div>
-
-            <a href="{% url 'excluir' task.id %}">&#128465;</a><br><br>
 
             {% endfor %}
 
+            {% for task in tasks %}
+            <div id="modal{{ task.id }}">
+                <form method="POST" action="{% url 'atualizar' task.id %}">
+                    {% csrf_token %}
+                    <input type="text" name="novo_nome" value="{{task.nome}}">
+                    <button type="submit">&#10003;</button>
+                    <div class="button" onclick="FecharM({{ task.id }})">x</div>
+
+                </form>
+
+            </div>
+            {% endfor %}
 
         </div>
 
-       
     </section>
 
 </body>
