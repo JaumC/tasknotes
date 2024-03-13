@@ -9,24 +9,24 @@
     <title>Task Notes</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-
+<header>
+    <div class="side-bar">
+        <img src="{% static '/img/navbar.svg' %}" alt="">
+    </div>
+</header>
 <body>
     <section>
-        <div>
-            <h1>Input</h1>
-
+        <div class="box1">
             <form method="POST" action="{% url 'cadastrar' %}">
                 {% csrf_token %}
 
-                <input type="text" name="nome" class="input" required>
-                <button type="submit">&#10003;</button>
-
+                <input placeholder="TASK INPUTS..." type="text" name="nome" class="input" required>
             </form>
         </div>
-        <div>
+        <div class="box2">
 
             {% if tasks %}
-            <h2>Task list</h2>
+            <h2>TASK LIST</h2>
 
             {% else %}
             <p>Está meio vazio aqui</p>
@@ -38,11 +38,12 @@
 
             <div class="container">
                 <div class="lista">
-                    <input type="checkbox" name="checkbox" class="checkbox">
-                    <p class="tasks">{{task.nome}}</p>
+                    <img src="{% static '/img/unchecked.svg' %}" id="unchecked{{ task.id }}" onclick="checkIt({{ task.id }})">
+
+                    <img src="{% static '/img/checked.svg' %}" id="checked{{ task.id }}" onclick="uncheckIt({{ task.id }})">
+                    
+                    <p onclick="AbrirM({{ task.id }})" id="taskName{{ task.id }}">{{task.nome}}</p>
                     <div class="buttons-container">
-                        <!--Editar-->
-                        <div class="buttons" onclick="AbrirM({{ task.id }})">&#128395;</div>
                         <!--Excluir-->
                         <a class="buttons_vermelho" onclick="return confirm('Tem certeza que deseja excluir?')" href="{% url 'excluir' task.id %}">&#128465;</a>
                     </div>
