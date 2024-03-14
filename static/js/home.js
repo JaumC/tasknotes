@@ -1,12 +1,16 @@
 function AbrirM(taskId) {
-    var task = document.getElementById("taskName" + taskId);
-    task.innerText = 'aa';
+    var lista = document.getElementById("lista" + taskId);
+    var modal = document.getElementById("modal" + taskId);
+    modal.style.display = 'flex';
+    lista.style.display = 'none';
 
 }
 
 function FecharM(taskId) {
     var modal = document.getElementById("modal" + taskId);
+    var lista = document.getElementById("lista" + taskId);
     modal.style.display = 'none';
+    lista.style.display = 'flex';
 
 }
 
