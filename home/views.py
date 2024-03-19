@@ -3,7 +3,11 @@ from .models import Tasks
 
 def home(request):
     tasks = Tasks.objects.all()
-    return render(request, 'home.html', {"tasks": tasks})
+    total_tasks = tasks.count()
+    context = {
+        'tasks': tasks, 'total_tasks': total_tasks
+    }
+    return render(request, 'home.html', context)
 
 def cadastrar(request):
     vnome = request.POST.get("nome")

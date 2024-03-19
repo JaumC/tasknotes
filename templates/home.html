@@ -1,80 +1,75 @@
+{% extends '_base.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
+{% block title %}
+Home
+{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Notes</title>
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
-</head>
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+{% endblock %}
 
-<header>
-    <div class="side-bar">
-        <img src="{% static '/img/home/navbar.svg' %}" alt="">
+{% block content %}
+
+<section>
+    <div class="box1">
+        <form method="POST" action="{% url 'cadastrar' %}">
+            {% csrf_token %}
+
+            <input placeholder="TASKS..." type="text" name="nome" class="input" required>
+        </form>
     </div>
-</header>
+    <div class="box2">
 
-<body>
-    <section>
-        <div class="box1">
-            <form method="POST" action="{% url 'cadastrar' %}">
-                {% csrf_token %}
+        {% if tasks %}
+        <h2>({{ total_tasks }}) TASK LIST</h2>
 
-                <input placeholder="TASK INPUTS..." type="text" name="nome" class="input" required>
-            </form>
-        </div>
-        <div class="box2">
+        {% else %}
+        <p>Está meio vazio aqui</p>
 
-            {% if tasks %}
-            <h2>TASK LIST</h2>
-
-            {% else %}
-            <p>Está meio vazio aqui</p>
-
-            {% endif %}
+        {% endif %}
 
 
-            {% for task in tasks %}
-        </div>
-        <div class="box3">
-            <div class="container">
-                <div class="checkbox">
-                    <img src="{% static '/img/home/unchecked.svg' %}" id="unchecked{{ task.id }}" onclick="checkIt({{ task.id }})">
+        {% for task in tasks %}
+    </div>
+    <div class="box3">
+        <div class="container">
+            <div class="checkbox">
+                <img src="{% static '/img/home/unchecked.svg' %}" id="unchecked{{ task.id }}" onclick="checkIt({{ task.id }})">
 
-                    <img src="{% static '/img/home/checked.svg' %}" id="checked{{ task.id }}" onclick="uncheckIt({{ task.id }})">
+                <img src="{% static '/img/home/checked.svg' %}" id="checked{{ task.id }}" onclick="uncheckIt({{ task.id }})">
+            </div>
+
+            <div class="lista" id="lista{{ task.id }}">
+                <p class="notas" onclick="AbrirM({{ task.id }})">{{task.nome}}</p>
+
+                <div class="buttons-container">
+                    <a class="buttons_vermelho" onclick="return confirm('Tem certeza que deseja excluir?')" href="{% url 'excluir' task.id %}">&#128465;</a>
                 </div>
-
-                <div class="lista" id="lista{{ task.id }}">
-                    <p class="notas" onclick="AbrirM({{ task.id }})">{{task.nome}}</p>
-
-                    <div class="buttons-container">
-                        <a class="buttons_vermelho" onclick="return confirm('Tem certeza que deseja excluir?')" href="{% url 'excluir' task.id %}">&#128465;</a>
-                    </div>
-                    
-                </div>
-                <div id="modal{{ task.id }}">
-                    <form method="POST" action="{% url 'atualizar' task.id %}">
-                        {% csrf_token %}
-                        <input type="text" name="novo_nome" value="{{task.nome}}">
-                        <div class="button" onclick="FecharM({{ task.id }})">x</div>
-                    </form>
-                </div>
+                
+            </div>
+            <div id="modal{{ task.id }}">
+                <form method="POST" action="{% url 'atualizar' task.id %}">
+                    {% csrf_token %}
+                    <input type="text" name="novo_nome" value="{{task.nome}}">
+                    <div class="button" onclick="FecharM({{ task.id }})">x</div>
+                </form>
             </div>
         </div>
+    </div>
 
-            {% endfor %}
+        {% endfor %}
 
-            {% for task in tasks %}
+        {% for task in tasks %}
 
-            {% endfor %}
+        {% endfor %}
 
-        </div>
+    </div>
 
-    </section>
+</section>
+{% endblock %}
 
-</body>
+{% block js %}
 <script src="{% static 'js/home.js' %}"></script>
-
-</html>
+{% endblock %}

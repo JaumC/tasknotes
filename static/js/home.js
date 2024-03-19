@@ -16,12 +16,16 @@ function FecharM(taskId) {
 
 function checkIt(id){    
     const checado = document.getElementById("checked" + id);
+    const unchecado = document.getElementById("unchecked" + id);
     checado.style.display = 'flex';
+    unchecado.style.display = 'none';
 
 }
 
 function uncheckIt(id){    
     const checado = document.getElementById("checked" + id);
+    const unchecado = document.getElementById("unchecked" + id);
     checado.style.display = 'none';
+    unchecado.style.display = 'flex';
     
 }

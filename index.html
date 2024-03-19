@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+</head>
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.side-bar{
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+    width: 200px;
+    height: 50px;
+}
+
+.side-bar.open-side{
+    height: 60%;
+}
+
+body{
+    display: flex;
+}
+</style>
+
+
+
+<body>
+    
+<nav class="side-bar">
+    <button class="side_btn">Side</button>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+    </ul>
+</nav>
+
+<main>
+    <h1>Conteúdo</h1>
+</main>
+
+</body>
+
+
+
+<script>
+
+document.querySelector('.side_btn').addEventListener('click', function(){
+    document.querySelector('.side-bar').classList.toggle('open-side');
+});
+
+</script>
+</html>
