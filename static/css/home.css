@@ -41,6 +41,7 @@ button[type="submit"] {
 .checkbox{
     display: flex;
     align-items: center;
+    cursor: pointer;
     position: relative;
     z-index: 0;
     width: 5%;
@@ -84,6 +85,7 @@ img[id^="checked"] {
     border: 2px solid white;
     border-radius: 15px;
     font-size: 400;
+    font-weight: 600;
 
 }
 
@@ -132,7 +134,6 @@ div[id^="modal"] form{
 .container {
     width: 90%;
     display: flex;
-    justify-content: center;
     align-items: center;
 
 }
@@ -203,12 +204,13 @@ div[id^="modal"] form{
 }
 
 .notas {
-    display: flex;
+    display: block;
     font-size: 15px;
     margin: 10px;
     padding: 5px;
     text-align: left;
     word-wrap: break-word;
+    cursor: pointer;
     max-width: 85%;
     width: 80%;
 

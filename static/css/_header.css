@@ -1,8 +1,9 @@
-header{
+.pai{
     width: 100%;
     height: 64px;
     background-color: #910F9C;
     border-radius: 0 0 10px 10px;
+    transition: height 0.3s ease;
 }
 
 .header{
@@ -10,23 +11,91 @@ header{
     width: 100%;
     background-color: #72ED0C;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     border-radius: 0 0 10px 10px;
+    transition: height 0.3s ease;
+    display: flex;
+    justify-content: center;
     
 }
 
-.logo{
-    position: relative;
+.icones{
+    margin-top: 5px;
+    position: fixed;
+    width: 100%;
     display: flex;
-    margin-left: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    margin-left: 25px;
 }
 
 .up_btn{
-    margin-right: 40px;
+    cursor: pointer;
+    margin-right: 30px;
     
 }
 
 .open-upbar{
+    display: flex;
     height: 234px;
+}
+
+.pai.open-upbar{
+    display: flex;
+    justify-content: center;
+    height: 238px;
+}
+
+.itens{
+    color: black;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+hr{
+    display: flex;
+    margin: 55px 0 15px 0;
+    background-color: #00000017;
+    height: 2.5px;
+    width: 100%;
+    border: none;
+}
+
+.itens li a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.itens li{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    display: flex;
+    padding: 10px;
+    list-style: none;
+}
+
+.itens li a img{
+    width: 20px;
+    margin-right: 15px;
+}
+
+.header.open-upbar .itens{
+    
+    transition: opacity 0.3s ease;
+    flex-direction: column;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    width: 85%;
+    opacity: 1;
 }
