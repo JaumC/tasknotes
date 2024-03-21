@@ -190,19 +190,6 @@ div[id^="modal"] form{
 
 }
 
-.buttons_vermelho {
-    padding: 5.5px 15px;
-    background-color: #ec3333;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 50px;
-
-}
-
 .notas {
     display: block;
     font-size: 15px;
@@ -212,6 +199,67 @@ div[id^="modal"] form{
     word-wrap: break-word;
     cursor: pointer;
     max-width: 85%;
-    width: 80%;
+
+}
+
+div[id^="rightClick"]{
+    display: none;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.losango-back{
+    position: absolute;
+    z-index: 0;
+    border: 2px solid white;
+    background-color: #220224;
+    margin-bottom: 20px;
+    width: 30px;
+    height: 30px;
+    transform: rotate(45deg);
+}
+
+.losango{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+    border-radius: 15px;
+    position: relative;
+    flex-direction: column;
+    border: 2px solid white;
+    background-color: #220224;
+    width: 196px;
+    height: 40px;
+
+}
+
+.losango-front{
+    margin-bottom: 22px;
+    position: absolute;
+    z-index: 2;
+    background-color: #220224;
+    width: 25.1px;
+    height: 25.1px;
+    transform: rotate(45deg);
+}
+
+.losango-itens{
+    padding-left: 20px;
+    width: 100%;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    color: white;
+    position: absolute;
+    z-index: 3;
+}
+
+div[id^="rightClick"] a{
+    color: white;
 
 }

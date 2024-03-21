@@ -37,35 +37,34 @@ Home
         <div class="container">
             <div class="checkbox">
                 <img src="{% static '/img/home/unchecked.svg' %}" id="unchecked{{ task.id }}" onclick="checkIt({{ task.id }})">
-
                 <img src="{% static '/img/home/checked.svg' %}" id="checked{{ task.id }}" onclick="uncheckIt({{ task.id }})">
             </div>
-
             <div class="lista" id="lista{{ task.id }}">
-                <p class="notas" onclick="AbrirM({{ task.id }})">{{task.nome}}</p>
-
-                <div class="buttons-container">
-                    <a class="buttons_vermelho" onclick="return confirm('Tem certeza que deseja excluir?')" href="{% url 'excluir' task.id %}">&#128465;</a>
-                </div>
-                
+                <p class="notas" oncontextmenu="direito(event, {{ task.id }})" onclick="AbrirM({{ task.id }})">{{ task.nome }}</p>
             </div>
             <div id="modal{{ task.id }}">
                 <form method="POST" action="{% url 'atualizar' task.id %}">
                     {% csrf_token %}
-                    <input type="text" name="novo_nome" value="{{task.nome}}">
+                    <input type="text" name="novo_nome" value="{{ task.nome }}">
                     <div class="button" onclick="FecharM({{ task.id }})">x</div>
                 </form>
             </div>
+            
+            <div id="rightClick{{ task.id }}">
+                <div class="losango-back"></div>
+                <div class="losango"></div>
+                <div class="losango-front"></div>
+
+                <a class="losango-itens" onclick="return confirm('Tem certeza que deseja excluir?')" href="{% url 'excluir' task.id %}">
+                    <img src="{% static '/img/home/trashAlt.svg' %}" alt="">Excluir
+                </a>
+                
+            </div>
         </div>
     </div>
+    
 
         {% endfor %}
-
-        {% for task in tasks %}
-
-        {% endfor %}
-
-    </div>
 
 </section>
 {% endblock %}
