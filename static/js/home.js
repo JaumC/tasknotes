@@ -9,15 +9,12 @@ function direito(event, id) {
     var notasBottom = notasRect.bottom + window.scrollY;
 
     modal.style.display = 'flex';
-    modal.style.left = (x - 88) + 'px';
+    modal.style.left = (x - 100) + 'px';
     modal.style.top = notasBottom + 'px';
 
-    // Adiciona um event listener para o clique no documento
     document.addEventListener('mousedown', function fecharModal(e) {
-        // Verifica se o clique foi fora do modal
         if (!modal.contains(e.target)) {
             modal.style.display = 'none';
-            // Remove o event listener após fechar o modal
             document.removeEventListener('mousedown', fecharModal);
         }
     });
@@ -26,8 +23,18 @@ function direito(event, id) {
 function AbrirM(taskId) {
     var lista = document.getElementById("lista" + taskId);
     var modal = document.getElementById("modal" + taskId);
+    var click = document.getElementById('rightClick' + taskId);
     modal.style.display = 'flex';
     lista.style.display = 'none';
+    click.style.display = 'none';
+
+    document.addEventListener('mousedown', function fecharModal(e) {
+        if (!modal.contains(e.target)) {
+            modal.style.display = 'none';
+            lista.style.display = 'flex';
+            document.removeEventListener('mousedown', fecharModal);
+        }
+    });
 
 }
 

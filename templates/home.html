@@ -19,8 +19,6 @@ Home
 
             <input placeholder="TASKS..." type="text" name="nome" class="input" required>
         </form>
-    </div>
-    <div class="box2">
 
         {% if tasks %}
         <h2>({{ total_tasks }}) TASK LIST</h2>
@@ -33,7 +31,13 @@ Home
 
         {% for task in tasks %}
     </div>
-    <div class="box3">
+
+    
+    <div class="box2">
+
+
+    </div>
+    <div class="box2">
         <div class="container">
             <div class="checkbox">
                 <img src="{% static '/img/home/unchecked.svg' %}" id="unchecked{{ task.id }}" onclick="checkIt({{ task.id }})">
@@ -46,19 +50,24 @@ Home
                 <form method="POST" action="{% url 'atualizar' task.id %}">
                     {% csrf_token %}
                     <input type="text" name="novo_nome" value="{{ task.nome }}">
-                    <div class="button" onclick="FecharM({{ task.id }})">x</div>
                 </form>
             </div>
             
             <div id="rightClick{{ task.id }}">
-                <div class="losango-back"></div>
-                <div class="losango"></div>
-                <div class="losango-front"></div>
+                <img class="modal-img" src="{% static '/img/home/arrowModal.svg' %}" alt="">
 
-                <a class="losango-itens" onclick="return confirm('Tem certeza que deseja excluir?')" href="{% url 'excluir' task.id %}">
-                    <img src="{% static '/img/home/trashAlt.svg' %}" alt="">Excluir
-                </a>
-                
+                <div class="losango">
+                    <ul>
+                        <li><a class="losango-itens" onclick="return confirm('Tem certeza que deseja excluir?')" href="{% url 'excluir' task.id %}">
+                        <img src="{% static '/img/home/trashAlt.svg' %}" alt="">Excluir
+                        </a></li>
+                        <li><a class="losango-itens" onclick="AbrirM({{ task.id }})">
+                            <img src="{% static '/img/home/edit.svg' %}" alt="">Editar
+                        </a></li>
+    
+                    </ul>
+                </div>
+ 
             </div>
         </div>
     </div>
