@@ -1,0 +1,12 @@
+
+<div id="modalConfirm{{ task.id }}">
+    <p class="textoModal">Deseja mesmo Excluir?</p>
+    <div class="buttons">
+        <a id="green" href="{% url 'excluir' task.id %}">
+            <p>SIM</p>
+        </a>
+        <a id="red" onclick="modalConfirmFechar({{ task.id }})">
+            <p>CANCELAR</p>
+        </a>
+    </div>
+</div>

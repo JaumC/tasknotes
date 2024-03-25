@@ -8,11 +8,13 @@ Home
 
 {% block css %}
 <link rel="stylesheet" href="{% static '/css/home.css' %}">
+<link rel="stylesheet" href="{% static '/css/modal.css' %}">
 {% endblock %}
 
 {% block content %}
 
 <section>
+
     <div class="box1">
         <form method="POST" action="{% url 'cadastrar' %}">
             {% csrf_token %}
@@ -25,18 +27,12 @@ Home
 
         {% else %}
         <p>Está meio vazio aqui</p>
-
+        
         {% endif %}
-
 
         {% for task in tasks %}
     </div>
 
-    
-    <div class="box2">
-
-
-    </div>
     <div class="box2">
         <div class="container">
             <div class="checkbox">
@@ -58,7 +54,8 @@ Home
 
                 <div class="losango">
                     <ul>
-                        <li><a class="losango-itens" onclick="return confirm('Tem certeza que deseja excluir?')" href="{% url 'excluir' task.id %}">
+                        <li><a class="losango-itens" onclick="modalConfirm({{ task.id }})">
+                            <!-- href="{% url 'excluir' task.id %}" -->
                         <img src="{% static '/img/home/trashAlt.svg' %}" alt="">Excluir
                         </a></li>
                         <li><a class="losango-itens" onclick="AbrirM({{ task.id }})">
@@ -70,14 +67,18 @@ Home
  
             </div>
         </div>
+        {% include 'modal.html' %}
     </div>
     
 
         {% endfor %}
+
+        
 
 </section>
 {% endblock %}
 
 {% block js %}
 <script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/modal.js' %}"></script>
 {% endblock %}

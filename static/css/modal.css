@@ -1,0 +1,55 @@
+div[id^=modalConfirm]{
+    top: auto;
+    position: fixed;
+    margin: 0 auto;
+    width: 288px;
+    height: 94px;
+    background-color: #72ED0C;
+    border: 2px solid #204105;
+    border-radius: 15px;
+    color: #08010C;
+    box-shadow: inset 4px 6px 4px 0 rgba(0, 0, 0, 0.25);
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+
+}
+
+.textoModal{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.buttons a{
+    font-size: 12px;
+    box-shadow: inset 4px 6px 4px 0 rgba(0, 0, 0, 0.25);
+    border: none;
+    width: 104px;
+    height: 34px;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    margin: auto;
+}
+
+#green{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3528CA;
+    
+}
+
+#red{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #B61C1C;
+    cursor: pointer;
+}
