@@ -1,0 +1,17 @@
+{% load static %}
+
+<div id="rightClick{{ task.id }}">
+    <img class="modal-img" src="{% static '/img/home/arrowModal.svg' %}" alt="">
+
+    <div class="losango">
+        <ul>
+            <li><a class="losango-itens" onclick="modalConfirm({{ task.id }})">
+            <img src="{% static '/img/home/trashAlt.svg' %}" alt="">Excluir
+            </a></li>
+            <li><a class="losango-itens" onclick="AbrirM({{ task.id }})">
+                <img src="{% static '/img/home/edit.svg' %}" alt="">Editar
+            </a></li>
+
+        </ul>
+    </div>
+</div>

@@ -9,6 +9,7 @@ Home
 {% block css %}
 <link rel="stylesheet" href="{% static '/css/home.css' %}">
 <link rel="stylesheet" href="{% static '/css/modal.css' %}">
+<link rel="stylesheet" href="{% static '/css/rightClick.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -30,17 +31,24 @@ Home
         
         {% endif %}
 
-        {% for task in tasks %}
     </div>
 
+    {% for task in tasks %}
+    
     <div class="box2">
         <div class="container">
-            <div class="checkbox">
-                <img src="{% static '/img/home/unchecked.svg' %}" id="unchecked{{ task.id }}" onclick="checkIt({{ task.id }})">
-                <img src="{% static '/img/home/checked.svg' %}" id="checked{{ task.id }}" onclick="uncheckIt({{ task.id }})">
+            <div class="checkboxes-container">
+
+                {% if task.checkbox == True %}
+                    <img src="{% static '/img/home/checked.svg' %}" id="checked{{ task.id }}" onclick="updateCheck('{{ task.id }}', false)">
+                {% else %}
+                    <img src="{% static '/img/home/unchecked.svg' %}" id="unchecked{{ task.id }}" onclick="updateCheck('{{ task.id }}', true)">
+                {% endif %}
+
             </div>
+
             <div class="lista" id="lista{{ task.id }}">
-                <p class="notas" oncontextmenu="direito(event, {{ task.id }})" onclick="AbrirM({{ task.id }})">{{ task.nome }}</p>
+                <p class="notas" oncontextmenu="direito(event, '{{ task.id }}')" onclick="AbrirM('{{ task.id }}')">{{ task.nome }}</p>
             </div>
             <div id="modal{{ task.id }}">
                 <form method="POST" action="{% url 'atualizar' task.id %}">
@@ -49,31 +57,12 @@ Home
                 </form>
             </div>
             
-            <div id="rightClick{{ task.id }}">
-                <img class="modal-img" src="{% static '/img/home/arrowModal.svg' %}" alt="">
-
-                <div class="losango">
-                    <ul>
-                        <li><a class="losango-itens" onclick="modalConfirm({{ task.id }})">
-                            <!-- href="{% url 'excluir' task.id %}" -->
-                        <img src="{% static '/img/home/trashAlt.svg' %}" alt="">Excluir
-                        </a></li>
-                        <li><a class="losango-itens" onclick="AbrirM({{ task.id }})">
-                            <img src="{% static '/img/home/edit.svg' %}" alt="">Editar
-                        </a></li>
-    
-                    </ul>
-                </div>
- 
-            </div>
+            {% include 'rightClick.html' %}
         </div>
         {% include 'modal.html' %}
+
     </div>
-    
-
         {% endfor %}
-
-        
 
 </section>
 {% endblock %}
@@ -81,4 +70,5 @@ Home
 {% block js %}
 <script src="{% static 'js/home.js' %}"></script>
 <script src="{% static 'js/modal.js' %}"></script>
+<script src="{% static 'js/rightClick.js' %}"></script>
 {% endblock %}

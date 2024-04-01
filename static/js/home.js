@@ -1,25 +1,3 @@
-function direito(event, id) {
-    var modal = document.getElementById('rightClick' + id);
-    event.preventDefault();
-    var x = event.clientX;
-    var y = event.clientY;
-
-    var notasElement = document.getElementById('lista' + id);
-    var notasRect = notasElement.getBoundingClientRect();
-    var notasBottom = notasRect.bottom + window.scrollY;
-
-    modal.style.display = 'flex';
-    modal.style.left = (x - 100) + 'px';
-    modal.style.top = notasBottom + 'px';
-
-    document.addEventListener('mousedown', function fecharModal(e) {
-        if (!modal.contains(e.target)) {
-            modal.style.display = 'none';
-            document.removeEventListener('mousedown', fecharModal);
-        }
-    });
-}
-
 function AbrirM(taskId) {
     var lista = document.getElementById("lista" + taskId);
     var modal = document.getElementById("modal" + taskId);
@@ -35,7 +13,6 @@ function AbrirM(taskId) {
             document.removeEventListener('mousedown', fecharModal);
         }
     });
-
 }
 
 function FecharM(taskId) {
@@ -46,18 +23,46 @@ function FecharM(taskId) {
 
 }
 
-function checkIt(id){    
-    const checado = document.getElementById("checked" + id);
-    const unchecado = document.getElementById("unchecked" + id);
-    checado.style.display = 'flex';
-    unchecado.style.display = 'none';
-
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Procura pelo token CSRF
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }
 
-function uncheckIt(id){    
-    const checado = document.getElementById("checked" + id);
-    const unchecado = document.getElementById("unchecked" + id);
-    checado.style.display = 'none';
-    unchecado.style.display = 'flex';
-    
+function updateCheck(id, isChecked){   
+    const csrftoken = getCookie('csrftoken'); 
+
+    console.log(isChecked)
+
+    fetch('/atualizar/' + id, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify({id: id, checkbox: isChecked})
+
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Estado do checkbox atualizado com sucesso');
+            window.location.reload()
+        } else {
+            console.error('AAAAAAAAAAAAAAaaErro ao atualizar o estado do checkbox');
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao atualizar o estado do checkbox:', error);
+    });
+
 }
