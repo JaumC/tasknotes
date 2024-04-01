@@ -1,3 +1,4 @@
+//Função para retornar o cookie do csrf
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -15,7 +16,7 @@ function getCookie(name) {
 }
 
 
-function AbrirM(taskId) {
+function edit(taskId) {
     var lista = document.getElementById("lista" + taskId);
     var modal = document.getElementById("modal" + taskId);
     var click = document.getElementById('rightClick' + taskId);
@@ -30,14 +31,6 @@ function AbrirM(taskId) {
             document.removeEventListener('mousedown', fecharModal);
         }
     });
-}
-
-function FecharM(taskId) {
-    var modal = document.getElementById("modal" + taskId);
-    var lista = document.getElementById("lista" + taskId);
-    modal.style.display = 'none';
-    lista.style.display = 'flex';
-
 }
 
 function updateCheck(id, isChecked){   

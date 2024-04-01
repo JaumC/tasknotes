@@ -1,11 +1,18 @@
+from django.db.models import BooleanField, Case, When, Value
 from django.shortcuts import render, redirect
-from .models import Tasks
 from django.http import JsonResponse
+from .models import Tasks
 import json
 
 
 def home(request):
-    tasks = Tasks.objects.all()
+    tasks = Tasks.objects.annotate(
+        checkbox_order=Case(
+            When(checkbox=True, then=Value(1)),
+            default=Value(0),
+            output_field=BooleanField()
+        )
+    ).order_by('checkbox_order')
     total_tasks = tasks.count()
     context = {'tasks': tasks, 'total_tasks': total_tasks}
     return render(request, 'home.html', context)

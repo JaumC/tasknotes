@@ -48,7 +48,7 @@ Home
             </div>
 
             <div class="lista" id="lista{{ task.id }}">
-                <p class="notas" oncontextmenu="direito(event, '{{ task.id }}')" onclick="AbrirM('{{ task.id }}')">{{ task.nome }}</p>
+                <p class="notas" oncontextmenu="direito(event, '{{ task.id }}')" onclick="edit('{{ task.id }}')">{{ task.nome }}</p>
             </div>
             <div id="modal{{ task.id }}">
                 <form method="POST" action="{% url 'atualizar' task.id %}">
