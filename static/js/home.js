@@ -1,3 +1,20 @@
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Procura pelo token CSRF
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
 function AbrirM(taskId) {
     var lista = document.getElementById("lista" + taskId);
     var modal = document.getElementById("modal" + taskId);
@@ -23,28 +40,10 @@ function FecharM(taskId) {
 
 }
 
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Procura pelo token CSRF
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
 function updateCheck(id, isChecked){   
     const csrftoken = getCookie('csrftoken'); 
 
-    console.log(isChecked)
-
-    fetch('/atualizar/' + id, {
+    fetch('/checkbox/' + id, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -55,14 +54,7 @@ function updateCheck(id, isChecked){
     })
     .then(response => {
         if (response.ok) {
-            console.log('Estado do checkbox atualizado com sucesso');
-            window.location.reload()
-        } else {
-            console.error('AAAAAAAAAAAAAAaaErro ao atualizar o estado do checkbox');
+            window.location.reload();
         }
-    })
-    .catch(error => {
-        console.error('Erro ao atualizar o estado do checkbox:', error);
-    });
-
-}
+    }
+)}

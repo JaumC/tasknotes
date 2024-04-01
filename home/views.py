@@ -16,7 +16,13 @@ def cadastrar(request):
     return redirect('home')
 
 def atualizar(request, id):
+    task = Tasks.objects.get(id=id)
+    vnome = request.POST.get("novo_nome")
+    task.nome = vnome
+    task.save()
+    return redirect('home')
 
+def checkbox(request, id):
     if request.method == 'POST':
         task = Tasks.objects.get(id=id)
         data = json.loads(request.body)
@@ -24,12 +30,10 @@ def atualizar(request, id):
 
         if vcheckbox == True:
             task.checkbox = True
-            print(vcheckbox)
-            task.save()
-        if vcheckbox == False:
+        
+        else:
             task.checkbox = False
-            print(vcheckbox)
-            task.save()
+        task.save()
 
         return JsonResponse({}, status=200)
     return JsonResponse({}, status=404)
