@@ -1,6 +1,6 @@
 <div id="modalEdit{{ task.id }}">
     <form method="POST" action="{% url 'atualizar' task.id %}">
         {% csrf_token %}
-        <input type="text" name="novo_nome" value="{{ task.nome }}">
+        <input id="inputEdit{{ task.id }}" type="text" name="novo_nome" value="{{ task.nome }}">
     </form>
 </div>

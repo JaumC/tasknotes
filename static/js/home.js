@@ -15,6 +15,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
+//Função que envia o estado dos checkboxes para o BACKEND
 function updateCheck(id, isChecked){   
     const csrftoken = getCookie('csrftoken'); 
 
@@ -32,4 +33,4 @@ function updateCheck(id, isChecked){
             window.location.reload();
         }
     }
-)}
+)};

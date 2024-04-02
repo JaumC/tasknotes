@@ -20,7 +20,6 @@ Home
     <div class="box1">
         <form method="POST" action="{% url 'cadastrar' %}">
             {% csrf_token %}
-
             <input placeholder="TASKS..." type="text" name="nome" class="input" required>
         </form>
 
