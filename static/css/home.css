@@ -1,7 +1,3 @@
-section {
-    color: white;
-}
-
 .box1{
     align-items: center;
     justify-content: center;
@@ -20,7 +16,7 @@ section {
     width: 100%;
 }
 
-.input {
+#input {
     background-color: #6C0875;
     box-shadow: inset 0 8px 4px 0 rgba(0, 0, 0, 0.25);
     color: #ffffff;
@@ -34,7 +30,7 @@ section {
     font-weight: 600;
 }
 
-.input::placeholder{
+#input::placeholder{
     display: flex;
     outline: none;
     font-weight: bold;

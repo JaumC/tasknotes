@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from .models import Tasks
 import json
 
+def lixeira(request):
+    return render(request, 'lixeira.html')
 
 def home(request):
     tasks = Tasks.objects.annotate(
@@ -15,7 +17,7 @@ def home(request):
     ).order_by('checkbox_order')
     total_tasks = tasks.count()
     context = {'tasks': tasks, 'total_tasks': total_tasks}
-    return render(request, 'home.html', context)
+    return render(request, 'homePage/home.html', context)
 
 def cadastrar(request):
     vnome = request.POST.get("nome")

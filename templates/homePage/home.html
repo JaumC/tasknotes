@@ -1,0 +1,66 @@
+{% extends '_base.html' %}
+
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static './css/home.css' %}">
+<link rel="stylesheet" href="{% static './css/modalConfirm.css' %}">
+<link rel="stylesheet" href="{% static './css/modalEdit.css' %}">
+<link rel="stylesheet" href="{% static './css/rightClick.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="box1">
+    <form method="POST" action="{% url 'cadastrar' %}">
+        {% csrf_token %}
+        <input placeholder="TASKS..." type="text" name="nome" id="input" required>
+    </form>
+
+    {% if tasks %}
+    <h2>({{ total_tasks }}) TASK LIST</h2>
+
+    {% else %}
+    <p>Está meio vazio aqui</p>
+    
+    {% endif %}
+
+</div>
+
+{% for task in tasks %}
+
+<div class="box2">
+    <div class="container">
+        <div class="checkboxes-container">
+
+            {% if task.checkbox == True %}
+                <img src="{% static './img/home/checked.svg' %}" id="checked{{ task.id }}" onclick="updateCheck('{{ task.id }}', false)">
+            {% else %}
+                <img src="{% static './img/home/unchecked.svg' %}" id="unchecked{{ task.id }}" onclick="updateCheck('{{ task.id }}', true)">
+            {% endif %}
+
+        </div>
+        <div class="lista" id="lista{{ task.id }}">
+            <p class="notas" oncontextmenu="direito(event, '{{ task.id }}')" onclick="edit('{{ task.id }}')">{{ task.nome }}</p>
+        </div>
+        {% include 'homePage/modalEdit.html' %}
+        
+        {% include 'homePage/rightClick.html' %}
+    </div>
+    {% include 'homePage/modalConfirm.html' %}
+
+</div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static './js/home.js' %}"></script>
+<script src="{% static './js/modalConfirm.js' %}"></script>
+<script src="{% static './js/modalEdit.js' %}"></script>
+<script src="{% static './js/rightClick.js' %}"></script>
+{% endblock %}

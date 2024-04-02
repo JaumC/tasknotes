@@ -5,21 +5,21 @@
         <div class="icones">
             <div class="logo">
                 <a href="{% url 'home' %}">
-                    <img src="{% static '/img/home/logo.svg' %}" alt="">
+                    <img src="{% static './img/home/logo.svg' %}" alt="">
                 </a>
             </div>
         
             <div class="up_btn">
-                <img src="{% static '/img/home/navbar.svg' %}" alt="">
+                <img src="{% static './img/home/navbar.svg' %}" alt="">
             </div>
         </div>
 
         <div class="itens">
             <hr>
             <ul>
-                <li><a><img src="{% static '/img/home/trash.svg' %}" alt="">Lixeira</a></li>
-                <li><a><img src="{% static '/img/home/perfil.svg' %}" alt="">Perfil</a></li>
-                <li><a><img src="{% static '/img/home/config.svg' %}" alt="">Configurações</a></li>
+                <li><a href="{% url 'lixeira' %}"><img src="{% static './img/home/trash.svg' %}" alt="">Lixeira</a></li>
+                <li><a><img src="{% static './img/home/perfil.svg' %}" alt="">Perfil</a></li>
+                <li><a><img src="{% static './img/home/config.svg' %}" alt="">Configurações</a></li>
             </ul>
         </div>
 

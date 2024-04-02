@@ -34,3 +34,8 @@ function updateCheck(id, isChecked){
         }
     }
 )};
+
+//Foco sempre no input
+window.onload = function(){
+    document.getElementById('input').focus()
+}
