@@ -15,24 +15,6 @@ function getCookie(name) {
     return cookieValue;
 }
 
-
-function edit(taskId) {
-    var lista = document.getElementById("lista" + taskId);
-    var modal = document.getElementById("modal" + taskId);
-    var click = document.getElementById('rightClick' + taskId);
-    modal.style.display = 'flex';
-    lista.style.display = 'none';
-    click.style.display = 'none';
-
-    document.addEventListener('mousedown', function fecharModal(e) {
-        if (!modal.contains(e.target)) {
-            modal.style.display = 'none';
-            lista.style.display = 'flex';
-            document.removeEventListener('mousedown', fecharModal);
-        }
-    });
-}
-
 function updateCheck(id, isChecked){   
     const csrftoken = getCookie('csrftoken'); 
 

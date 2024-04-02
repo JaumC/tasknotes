@@ -8,7 +8,8 @@ Home
 
 {% block css %}
 <link rel="stylesheet" href="{% static '/css/home.css' %}">
-<link rel="stylesheet" href="{% static '/css/modal.css' %}">
+<link rel="stylesheet" href="{% static '/css/modalConfirm.css' %}">
+<link rel="stylesheet" href="{% static '/css/modalEdit.css' %}">
 <link rel="stylesheet" href="{% static '/css/rightClick.css' %}">
 {% endblock %}
 
@@ -46,20 +47,14 @@ Home
                 {% endif %}
 
             </div>
-
             <div class="lista" id="lista{{ task.id }}">
                 <p class="notas" oncontextmenu="direito(event, '{{ task.id }}')" onclick="edit('{{ task.id }}')">{{ task.nome }}</p>
             </div>
-            <div id="modal{{ task.id }}">
-                <form method="POST" action="{% url 'atualizar' task.id %}">
-                    {% csrf_token %}
-                    <input type="text" name="novo_nome" value="{{ task.nome }}">
-                </form>
-            </div>
+            {% include 'modalEdit.html' %}
             
             {% include 'rightClick.html' %}
         </div>
-        {% include 'modal.html' %}
+        {% include 'modalConfirm.html' %}
 
     </div>
         {% endfor %}
@@ -69,6 +64,7 @@ Home
 
 {% block js %}
 <script src="{% static 'js/home.js' %}"></script>
-<script src="{% static 'js/modal.js' %}"></script>
+<script src="{% static 'js/modalConfirm.js' %}"></script>
+<script src="{% static 'js/modalEdit.js' %}"></script>
 <script src="{% static 'js/rightClick.js' %}"></script>
 {% endblock %}
