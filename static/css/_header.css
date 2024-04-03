@@ -48,11 +48,11 @@
 
 .itens{
     color: black;
-    opacity: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    overflow: hidden;
+    width: 0;
 }
 
 hr{
@@ -93,11 +93,10 @@ hr{
 }
 
 .header.open-upbar .itens{
-    transition: opacity 0.3s ease;
+    transition: 0.5s ease;
     flex-direction: column;
     display: flex;
     align-items: start;
     justify-content: center;
     width: 85%;
-    opacity: 1;
 }

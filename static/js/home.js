@@ -40,6 +40,7 @@ window.onload = function(){
     document.getElementById('input').focus()
 }
 
+//Função para animar as checkboxes
 function checkStatus(taskId){
     document.getElementById('unchecked' + taskId).style.display = 'flex'
     document.getElementById('checkStatus' + taskId).style.display = 'none'
@@ -52,10 +53,3 @@ function checkStatus(taskId){
         }
     });
 }
-
-document.addEventListener('mousedown', function fecharModal(e) {
-    if (!modal.contains(e.target)) {
-        modal.style.display = 'none';
-        document.removeEventListener('mousedown', fecharModal);
-    }
-});
