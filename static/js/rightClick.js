@@ -1,4 +1,4 @@
-function direito(event, id) {
+function rightClick(event, id) {
     var modal = document.getElementById('rightClick' + id);
     event.preventDefault();
     var x = event.clientX;

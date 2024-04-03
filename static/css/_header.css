@@ -37,13 +37,13 @@
 
 .open-upbar{
     display: flex;
-    height: 234px;
+    height: 248px;
 }
 
 .pai.open-upbar{
     display: flex;
     justify-content: center;
-    height: 238px;
+    height: 252px;
 }
 
 .itens{
@@ -83,8 +83,11 @@ hr{
     font-size: 15px;
 }
 
-.itens li a:hover{
+.itens li:hover{
+    border-bottom: 2px solid #00000017;
+    border-radius: 15px;
     color: #910F9C;
+    box-shadow: 4px 3px 3px 0 rgba(0, 0, 0, 0.25);
 }
 
 .itens li a img{

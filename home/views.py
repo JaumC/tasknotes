@@ -4,14 +4,17 @@ from django.http import JsonResponse
 from .models import Tasks
 import json
 
-def lixeira(request):
-    return render(request, 'lixeira.html')
+def limpeza(request):
+    return render(request, 'limpeza.html')
 
 def perfil(request):
     return render(request, 'perfil.html')
 
 def config(request):
     return render(request, 'configuracoes.html')
+
+def historico(request):
+    return render(request, 'historico.html')
     
 
 def home(request):
