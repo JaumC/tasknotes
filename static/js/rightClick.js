@@ -2,7 +2,6 @@ function direito(event, id) {
     var modal = document.getElementById('rightClick' + id);
     event.preventDefault();
     var x = event.clientX;
-    var y = event.clientY;
 
     var notasElement = document.getElementById('lista' + id);
     var notasRect = notasElement.getBoundingClientRect();

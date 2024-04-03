@@ -7,6 +7,13 @@ import json
 def lixeira(request):
     return render(request, 'lixeira.html')
 
+def perfil(request):
+    return render(request, 'perfil.html')
+
+def config(request):
+    return render(request, 'configuracoes.html')
+    
+
 def home(request):
     tasks = Tasks.objects.annotate(
         checkbox_order=Case(

@@ -39,3 +39,23 @@ function updateCheck(id, isChecked){
 window.onload = function(){
     document.getElementById('input').focus()
 }
+
+function checkStatus(taskId){
+    document.getElementById('unchecked' + taskId).style.display = 'flex'
+    document.getElementById('checkStatus' + taskId).style.display = 'none'
+
+    document.addEventListener('mouseout', function unckdStatus(e) {
+        if(!document.getElementById('checkStatus' + taskId).contains(e.target)){
+            document.getElementById('unchecked' + taskId).style.display = 'none'
+            document.getElementById('checkStatus' + taskId).style.display = 'flex'
+            document.removeEventListener('mouseout', unckdStatus);
+        }
+    });
+}
+
+document.addEventListener('mousedown', function fecharModal(e) {
+    if (!modal.contains(e.target)) {
+        modal.style.display = 'none';
+        document.removeEventListener('mousedown', fecharModal);
+    }
+});
