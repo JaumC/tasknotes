@@ -4,10 +4,10 @@ div[id^=modalConfirm]{
     transform: translate(-50%, -50%);
     position: fixed;
     margin: 0 auto;
-    width: 288px;
-    height: 94px;
-    background-color: #72ED0C;
-    border: 2px solid #204105;
+    width: 290px;
+    height: 100px;
+    background-color: #220224;
+    border: 2px solid #910F9C;
     border-radius: 15px;
     color: #08010C;
     box-shadow: inset 4px 6px 4px 0 rgba(0, 0, 0, 0.25);
@@ -20,6 +20,7 @@ div[id^=modalConfirm]{
 .textoModal{
     font-weight: bold;
     font-size: 16px;
+    color: white;
 }
 
 .buttons{
@@ -29,7 +30,7 @@ div[id^=modalConfirm]{
 
 .buttons a{
     font-size: 12px;
-    box-shadow: inset 4px 6px 4px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 4px 6px 4px 0 rgba(0, 0, 0, 0.25);
     border: none;
     width: 104px;
     height: 34px;
@@ -43,13 +44,22 @@ div[id^=modalConfirm]{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #3528CA;
+    background-color: #54A90D;
+}
+
+#green:hover{
+    background-color: #5dbe0d;
 }
 
 #red{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #B61C1C;
+    background-color: #FF0000;
     cursor: pointer;
+}
+
+#red:hover{
+    background-color: #d30202;
+
 }
