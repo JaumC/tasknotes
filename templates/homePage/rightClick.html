@@ -5,13 +5,13 @@
 
     <div class="losango">
         <ul>
-            <li><a class="losango-itens" onclick="modalConfirm('{{ task.id }}')">
+            <li><a class="losango-itens" onclick="modalConfirm('{{ task.id }}', 0)">
             <img src="{% static '/img/home/trashAlt.svg' %}" alt="">Excluir
             </a></li>
             <li><a class="losango-itens" onclick="edit('{{ task.id }}')">
                 <img src="{% static '/img/home/edit.svg' %}" alt="">Editar
             </a></li>
-            <li><a class="losango-itens" onclick="modalConfirm('{{ task.id }}')">
+            <li><a class="losango-itens" onclick="modalConfirm('{{ task.id }}', 1)">
                 <img src="{% static '/img/home/clear.svg' %}" alt="">Limpar
             </a></li>
 

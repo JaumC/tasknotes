@@ -1,13 +1,27 @@
 {% load static %}
 
-<div id="modalConfirm{{ task.id }}">
-    <p class="textoModal">Deseja mesmo continuar?</p>
+<div id="modalConfirmExcluir{{ task.id }}">
+    <p class="textoModal">Deseja mesmo Excluir?</p>
     <div class="buttons">
-        <a id="green" href="{% url 'excluir' task.id %}">
+        <a class="green" href="{% url 'excluir' task.id %}">
             <img src="{% static './img/home/Aceitar.svg' %}"></img>
         </a>
-        <a id="red" onclick="modalConfirmFechar('{{ task.id }}')">
+        <a class="red" onclick="modalConfirmFechar('{{ task.id }}')">
             <img src="{% static './img/home/Negar.svg' %}"></img>
         </a>
     </div>
 </div>
+
+<div id="modalConfirmLimpeza{{ task.id }}">
+    <p class="textoModal">Deseja mesmo Limpar?</p>
+    <div class="buttons">
+        <a class="green" href="{% url 'limpeza' %}">
+            <img src="{% static './img/home/Aceitar.svg' %}"></img>
+        </a>
+        <a class="red" onclick="modalConfirmFechar('{{ task.id }}')">
+            <img src="{% static './img/home/Negar.svg' %}"></img>
+        </a>
+    </div>
+</div>
+
+

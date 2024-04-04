@@ -5,7 +5,8 @@ from .models import Tasks
 import json
 
 def limpeza(request):
-    return render(request, 'limpeza.html')
+    tasks = Tasks.objects.filter(checkbox=True)
+    return render(request, 'limpeza.html', {'tasks': tasks})
 
 def perfil(request):
     return render(request, 'perfil.html')

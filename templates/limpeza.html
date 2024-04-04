@@ -6,3 +6,37 @@
 Limpeza
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static './css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    {% for task in tasks %}
+    <div class="box2">
+
+        <div class="container">
+            <div class="checkboxes-container">
+
+                {% if task.checkbox == True %}
+                    <img src="{% static './img/home/checked.svg' %}" id="checked{{ task.id }}" onclick="updateCheck('{{ task.id }}', false)">
+                {% else %}
+                    <img src="{% static './img/home/unchecked.svg' %}" id="checkStatus{{ task.id }}" onmouseenter="checkStatus('{{ task.id }}')">
+                    <img src="{% static './img/home/fundo_ckd.svg' %}" id="unchecked{{ task.id }}" onclick="updateCheck('{{ task.id }}', true)">
+                {% endif %}
+
+            </div>
+            <div class="lista" id="lista{{ task.id }}">
+                <p class="notas" oncontextmenu="rightClick(event, '{{ task.id }}')" onclick="edit('{{ task.id }}')">{{ task.nome }}</p>
+            </div>
+
+        </div>
+    </div>
+    
+         
+    {% endfor %}
+
+{% endblock %}
+{% block js %}
+<script src="{% static './js/home.js' %}"></script>
+{% endblock %}
